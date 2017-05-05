@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  private title: string = 'Star Wars Trivia';
+  private navLinks: any[] = [{'url':'/movies', 'label': 'Movies'}, {'url': '/characters', 'label': 'Characters'}];
 }

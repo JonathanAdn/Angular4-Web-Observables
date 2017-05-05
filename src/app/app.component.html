@@ -1,3 +1,21 @@
-<h1>
-  {{title}}
-</h1>
+<!--<md-toolbar color="primary">
+  <span>{{title}}</span>
+  <md-toolbar-row>
+    <button routerLink="/movies" routerLinkActive="active" md-raised-button color="accent">Movies</button>&nbsp;
+    <button routerLink="/characters" routerLinkActive="active" md-raised-button color="accent">Characters</button>&nbsp;
+    <button md-raised-button color="accent" [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</button>
+  </md-toolbar-row>
+</md-toolbar>-->
+
+<nav md-tab-nav-bar>
+  <a md-tab-link
+    *ngFor="let link of navLinks"
+    [routerLink]="link.url"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+
+<router-outlet></router-outlet>
+<!--<router-outlet name="popup"></router-outlet>-->

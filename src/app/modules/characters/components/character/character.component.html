@@ -1,0 +1,19 @@
+<md-card class="card" *ngIf="character">
+    <md-card-title>{{character.name}}</md-card-title>
+    <md-card-content>
+      <p><b>Username:</b> {{character.username}}</p>
+      <p><b>Email:</b> {{character.email}}</p>
+      <p><b>Address - street:</b> {{character.address.street}}</p>
+      <p><b>Suite:</b> {{character.address.suite}}</p>
+      <p><b>City:</b> {{character.address.city}}</p>
+      <p><b>Zipcode:</b> {{character.address.zipcode}}</p>
+      <p><b>Geolocation - latitude:</b> {{character.address.geo.lat}}</p>
+      <p><b>Longitude:</b> {{character.address.geo.lng}}</p>
+      <p><b>Phone:</b> {{character.phone}}</p>
+      <p><b>Website:</b> {{character.website}}</p>
+      <p><b>Company name:</b> {{character.company.name}}</p>
+      <p><b>Catch phrase:</b> {{character.company.catchPhrase}}</p>
+      <p><b>Bs:</b> {{character.company.bs}}</p>
+    </md-card-content>
+    <button md-raised-button (click)="gotoCharacters()">Back ></button>
+</md-card>

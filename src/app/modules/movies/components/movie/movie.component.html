@@ -1,0 +1,10 @@
+<md-card class="card" *ngIf="movie">
+  <md-card-title>Episode {{movie.episode_id}} - {{movie.title}}</md-card-title>
+    <md-card-content>
+      <p>Released on the {{movie.release_date | date: 'fullDate'}}</p>
+      <p>Directed by {{movie.director}}</p>
+      <p>Produced by {{movie.producer}}</p>
+      <p>{{movie.opening_crawl}}</p>
+    </md-card-content>
+    <button md-raised-button (click)="gotoMovies()">Back ></button>
+</md-card>

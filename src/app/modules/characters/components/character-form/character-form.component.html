@@ -1,0 +1,98 @@
+<form #characterForm="ngForm" (ngSubmit)="onSubmit(); characterForm.resetForm()" class="character-form" novalidate>
+  <br /><table class="character-full-width" cellspacing="0">
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.name" name="name" mdInput placeholder="Name" #name="ngModel" required>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </md-input-container></td>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.username" name="username" mdInput placeholder="Username" #username="ngModel"
+          maxlength="15" required>
+          <md-hint *ngIf="character.username" align="end">{{username.value.length}} / 15</md-hint>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.email" name="email" mdInput placeholder="Email" #mass="ngModel" required>
+      </md-input-container></td>
+    </tr>
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.street" name="street" mdInput placeholder="Address - street name" #street="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.suite" name="suite" mdInput placeholder="Suite" #suite="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.city" name="city" mdInput placeholder="City" #address="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.zipcode" name="zipcode" mdInput placeholder="Zipcode" #zipcode="ngModel" required>
+        </md-input-container></td>
+    </tr>
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.geo.lat" name="lat" mdInput placeholder="Address - geolocation - lat" #lat="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.address.geo.lng" name="lng" mdInput placeholder="Address - geolocation - long" #lng="ngModel" required>
+        </md-input-container></td>
+    </tr>
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.phone" name="phone" mdInput placeholder="Phone number" #phone="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.website" name="website" mdInput placeholder="Website" #website="ngModel" required>
+        </md-input-container></td>
+    </tr>
+  </table>
+  <table class="character-full-width" cellspacing="0">
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.company.name" name="company.name" mdInput placeholder="Company name" #company.name="ngModel" required>
+        </md-input-container></td>
+    </tr>
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.company.catchPhrase" name="catchPhrase" mdInput placeholder="Catch Phrase" #catchPhrase="ngModel" required>
+        </md-input-container></td>
+        <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.company.bs" name="bs" mdInput placeholder="BS" #bs="ngModel" required>
+        </md-input-container></td>
+    </tr>
+  </table>
+    <!--
+    <tr>
+      <td><md-input-container class="character-full-width">
+        <input [(ngModel)]="character.birth_year" name="birth_year" mdInput placeholder="Birth year / place" #birth_year="ngModel" required>
+      </md-input-container></td>
+      <td><label for="gender">Gender</label>
+        <md-radio-group class="example-radio-group" [(ngModel)]="character.gender" name="gender" required>
+          <md-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </md-radio-button>
+        </md-radio-group>
+    </tr>-->
+    <!--<tr>
+      <td>
+        <div ng2FileDrop  [uploader]="uploader">
+        <input type="file" ng2FileSelect [uploader]="uploader" [(ngModel)]="character.pictureUrl" name="pictureUrl" #pictureUrl="ngModel">
+        </div>
+      </td>
+    </tr>-->
+    
+  </form>
+
+  <div *ngIf="character.id; then edit else create"></div>
+  <ng-template #edit>
+    <button type="button" md-raised-button color="primary" [disabled]="characterForm.form.invalid"
+    (click)="editCharacter(character)">Edit Character</button>
+  </ng-template>
+
+  <ng-template #create>
+    <button type="button" md-raised-button color="primary" [disabled]="characterForm.form.invalid"
+    (click)="newCharacter(character)">New Character</button>
+  </ng-template>
+  
+  <button type="button" md-raised-button color="primary" (click)="cancel()">Cancel</button>

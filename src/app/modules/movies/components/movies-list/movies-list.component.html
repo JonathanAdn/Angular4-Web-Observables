@@ -1,0 +1,14 @@
+<md-toolbar color="secondary">
+  <span>Star Wars Movies</span>
+  <span class="searchBar">
+    <md-input-container floatPlaceholder="never">
+      <input mdInput type="text" [(ngModel)]="searchFilter" placeholder="Search" name="searchFilter">
+    </md-input-container>
+  </span>
+</md-toolbar>
+
+<md-list>
+  <md-list-item *ngFor="let movie of movies | filterBy: searchFilter">
+    <p (click)="onSelect(movie)" class="badge"><b>Episode {{movie.episode_id}} - {{movie.title}}</b></p>
+  </md-list-item>
+</md-list>
