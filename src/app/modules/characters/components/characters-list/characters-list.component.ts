@@ -72,13 +72,14 @@ export class CharactersListComponent implements OnInit {
       })
   }
 
-  private removeUser(user: User, index: number): void {
+  private removeUser(user: User): void {
     this.dialogsService
       .confirm('Deleting ' + user.name + '...', 'Are you sure?')
       .subscribe(res => { 
         if(res === true) {
           this.userService.removeUser(user)
             .subscribe(() => {
+              let index = this.users.indexOf(user);
               this.users.splice(index, 1);
               this.snackBar.open(user.name + ' has been removed!', 'OK', {
                 duration: 3000,
@@ -97,8 +98,8 @@ export class CharactersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCharacters();
-    this.getUsers();
+    // this.getCharacters();
+    if(!this.users) this.getUsers();
   }
 
 }

@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    border: 10px solid goldenrod;
+}
+
 .badge {
     display: inline-block;
     font-size: small;
@@ -12,6 +17,11 @@
     margin-right: .8em;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.badge:hover {
+    background: #fff;
+    color: black;
 }
 
 .trash-icon {

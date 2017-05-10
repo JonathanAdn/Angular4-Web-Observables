@@ -28,8 +28,7 @@ export class UserFormComponent implements OnInit {
 
   private editUser(user: User): void {
     this.userService.updateUser(user)
-      .subscribe(user => {
-        this.user = user;
+      .subscribe(() => {
         this.router.navigate(['/characters']);
         this.snackBar.open(user.name + ' has been edited!', 'OK', {
           duration: 3000,

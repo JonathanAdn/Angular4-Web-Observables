@@ -35,7 +35,7 @@ export class UserService {
     let options    = new RequestOptions({ headers: headers }); // Create a request option
 
       return this.http
-        .put(`${this.sheetsuApiUrl}/name/${body['name']}`, body, options) // ...using put request
+        .put(`${this.sheetsuApiUrl}/id/${body['id']}`, body, options) // ...using put request
         .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
         .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   } 

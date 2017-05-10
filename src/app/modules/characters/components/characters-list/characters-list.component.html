@@ -1,40 +1,40 @@
-<md-toolbar color="secondary">
-  <span><button (click)="goToCharacterForm()" md-raised-button color="primary"><md-icon class="trash-icon">add</md-icon> Character</button></span>
-  <span class="searchBar">
-    <md-input-container floatPlaceholder="never">
-      <input mdInput type="text" [(ngModel)]="searchFilter" placeholder="Search" name="searchFilter">
-    </md-input-container></span>
-</md-toolbar>
-
-<md-toolbar color="secondary">Professors list</md-toolbar>
-<div *ngIf="(characters | filterBy: searchFilter)?.length === 0">
   <md-toolbar color="secondary">
-    <span>No results</span>&nbsp;<button type="button" md-raised-button (click)="resetSearch()">OK</button>
+    <!--<span><button (click)="goToCharacterForm()" md-raised-button color="primary"><md-icon class="trash-icon">add</md-icon> Character</button></span>-->
+    <span class="searchBar">
+      <md-input-container floatPlaceholder="never">
+        <input mdInput type="text" [(ngModel)]="searchFilter" placeholder="Search" name="searchFilter">
+      </md-input-container></span>
   </md-toolbar>
-</div>
-<md-list>
-  <md-list-item *ngFor="let character of characters | filterBy: searchFilter; let i = index">
-    <div>
-      <p (click)="onSelect(character)" class="badge"><b>{{character.name}}</b></p>
-      <button md-icon-button (click)="editCharacter(character)" color=primary><md-icon>edit</md-icon></button>|
-      <button md-icon-button (click)="removeCharacter(character.id, character.name)" color="warn"><md-icon>delete</md-icon></button>
-    </div>
-  </md-list-item>
-</md-list>
 
-<md-toolbar color="secondary">Sheetsu users list</md-toolbar>
-<div><button (click)="goToUserForm()" md-raised-button color="primary"><md-icon class="trash-icon">add</md-icon> User</button></div>
-<div *ngIf="(users | filterBy: searchFilter)?.length === 0">
-  <md-toolbar color="secondary">
-    <span>No results</span>&nbsp;<button type="button" md-raised-button (click)="resetSearch()">OK</button>
-  </md-toolbar>
-</div>
-<md-list>
-  <md-list-item *ngFor="let user of users | filterBy: searchFilter; let i = index" [ngClass]="{'mat-list mat-list-item': user.id === ''}">
-    <div>
-      <p class="badge"><b>{{user.name}}</b></p>
-      <button md-icon-button (click)="editUser(user)" color=primary><md-icon>edit</md-icon></button>|
-      <button md-icon-button (click)="removeUser(user, i)" color="warn"><md-icon>delete</md-icon></button>
-    </div>
-  </md-list-item>
-</md-list>
+  <!--<md-toolbar color="secondary">Professors list</md-toolbar>
+  <div *ngIf="(characters | filterBy: searchFilter)?.length === 0">
+    <md-toolbar color="secondary">
+      <span>No results</span>&nbsp;<button type="button" md-raised-button (click)="resetSearch()">OK</button>
+    </md-toolbar>
+  </div>
+  <md-list>
+    <md-list-item *ngFor="let character of characters | filterBy: searchFilter; let i = index">
+      <div>
+        <p (click)="onSelect(character)" class="badge"><b>{{character.name}}</b></p>
+        <button md-icon-button (click)="editCharacter(character)" color=primary><md-icon>edit</md-icon></button>|
+        <button md-icon-button (click)="removeCharacter(character.id, character.name)" color="warn"><md-icon>delete</md-icon></button>
+      </div>
+    </md-list-item>
+  </md-list>-->
+
+  <md-toolbar color="secondary">Sheetsu users list</md-toolbar>
+  <div><button (click)="goToUserForm()" md-raised-button color="primary"><md-icon class="trash-icon">add</md-icon> User</button></div>
+  <div *ngIf="(users | filterBy: searchFilter)?.length === 0">
+    <md-toolbar color="secondary">
+      <span>No results</span>&nbsp;<button type="button" md-raised-button (click)="resetSearch()">OK</button>
+    </md-toolbar>
+  </div>
+  <md-list>
+    <md-list-item *ngFor="let user of users | filterBy: searchFilter; let i = index" [ngClass]="{'mat-list mat-list-item': user.id === ''}">
+      <div>
+        <span class="badge"><b>{{user.name}}</b></span><span>{{user.score}}</span>
+        <button md-icon-button (click)="editUser(user)" color=primary><md-icon>edit</md-icon></button>|
+        <button md-icon-button (click)="removeUser(user)" color="warn"><md-icon>delete</md-icon></button>
+      </div>
+    </md-list-item>
+  </md-list>
